@@ -6,8 +6,13 @@ class Dashboard extends Component {
   render(){
     return (
       <div className="dashboard">
-        this is the dashboard component.
-        <Product />
+        {
+          this.props.invList.map((e,i) => {
+            return (
+              <Product item={e} key={i} />
+            )
+          })
+        }
       </div>
     );
   }

@@ -1,4 +1,16 @@
 .product {
-  font-family: Tahoma;
-  border: solid red;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  background-color: #D34735;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.product-info {
+  grid-column: span 1;
+}
+.product-image {
+  height: 150px;
+  width: 250px;
+  background-size: cover;
+  grid-column: span 1;
 }

@@ -1,3 +1,17 @@
+.App {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 .App div {
   margin: 10px;
+}
+.header {
+  grid-column: span 2;
+}
+.dashboard,.form {
+  grid-column: span 1;
+}
+.product,.form,button{
+  padding: 5px;
+  border-radius: 5px;
 }
