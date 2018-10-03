@@ -16,9 +16,7 @@ massive(process.env.DB_URI)
   })
 
 
-app.get('/api/inventory',(req,res,next) => {
-  res.status(200).send(controller.getInventory());
-})
+app.get('/api/inventory',controller.getInventory);
 
 app.listen(4000, () => {
   console.log('now listening on 4000');
