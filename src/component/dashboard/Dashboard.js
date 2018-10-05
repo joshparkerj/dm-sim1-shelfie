@@ -3,6 +3,16 @@ import Product from '../product/Product';
 import axios from 'axios';
 
 class Dashboard extends Component {
+  constructor(){
+    super();
+    this.state={
+      inventoryList: []
+    }
+  }
+
+  componentDidMount(){
+    this.getInventory();
+  }
 
   deleteProduct = id => {
     axios.delete(`/api/product/${id}`)
@@ -14,6 +24,17 @@ class Dashboard extends Component {
       })
   }
 
+  getInventory = () => {
+    axios.get('/api/inventory')
+      .then(res => {
+        this.setState({inventoryList: res.data});
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
+
+
   render(){
     return (
       <div className="dashboard">
@@ -24,7 +45,6 @@ class Dashboard extends Component {
                 item={e}
                 key={i}
                 del={this.deleteProduct}
-                edit={this.props.appEdit}
               />
             )
           })

@@ -10,6 +10,17 @@ module.exports = {
         console.log(err);
       })
   },
+  readProduct: (req,res,next) => {
+    const db = req.app.get('db');
+    db.read_product([req.params.id])
+      .then(r => {
+        res.status(200).send(r);
+      })
+      .catch(err => {
+        res.status(500).send('read product failed');
+        console.log(err);
+      })
+  },
   createProduct: (req,res,next) => {
     const db = req.app.get('db');
     db.create_product([
@@ -21,6 +32,7 @@ module.exports = {
         res.status(200).send();
       })
       .catch(err => {
+        res.status(500).send('create product failed');
         console.error(err);
       })
   },
@@ -36,6 +48,7 @@ module.exports = {
         res.status(200).send();
       })
       .catch(err => {
+        res.status(500).send('update product failed');
         console.error(err);
       })
   },
@@ -46,6 +59,7 @@ module.exports = {
         res.status(200).send();
       })
       .catch(err => {
+        res.status(500).send('delete product failed');
         console.error(err);
       })
   }

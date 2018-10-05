@@ -16,7 +16,7 @@ massive(process.env.DB_URI)
     console.log(err);
   })
 
-
+app.get('/api/product/:id', controller.readProduct);
 app.get('/api/inventory',controller.getInventory);
 app.post('/api/product', controller.createProduct);
 app.delete('/api/product/:id', controller.deleteProduct);

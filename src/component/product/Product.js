@@ -13,7 +13,9 @@ function Product(props){
         <h5>{props.item.name}</h5>
         <h5>${props.item.price}</h5>
         <button onClick={() => props.del(props.item.product_id)}>Delete</button>
-        <button onClick={() => props.edit(props.item)}>Edit</button>
+        <a href={`/edit/${props.item.product_id}`}>
+          <button>Edit</button>
+        </a>
       </div>
     </div>
   )
