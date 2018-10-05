@@ -1,4 +1,12 @@
 .header {
-  font-family: Impact;
-  border: solid magenta;
+  padding: 15px;
+  background-color: #AB2A19;
+}
+#shelfie-logo {
+  background-image: url('/shelfie_icon.png');
+  background-size: contain;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 25px;
 }

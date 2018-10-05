@@ -4,7 +4,8 @@ import './header.css';
 function Header(props){
   return (
     <div className="header">
-      This is the functional component known as Header.
+      <span id="shelfie-logo"></span>
+      SHELFIE
     </div>
   )
 }

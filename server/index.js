@@ -6,6 +6,7 @@ const dotenv = require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static('../public'));
 
 massive(process.env.DB_URI)
   .then(db => {
@@ -17,6 +18,9 @@ massive(process.env.DB_URI)
 
 
 app.get('/api/inventory',controller.getInventory);
+app.post('/api/product', controller.createProduct);
+app.delete('/api/product/:id', controller.deleteProduct);
+app.put('/api/product/:id', controller.updateProduct);
 
 app.listen(4000, () => {
   console.log('now listening on 4000');
