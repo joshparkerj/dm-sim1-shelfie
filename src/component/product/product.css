@@ -8,9 +8,8 @@
   grid-column: span 1;
 }
 .product-image {
-  height: 150px;
+  height: auto;
   width: 250px;
-  background-size: cover;
   grid-column: span 1;
 }
 .product button {

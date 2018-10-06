@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './form.css';
 
-
 const INIT_STATE = {
   img_url: '',
   name: '',
@@ -18,19 +17,29 @@ class Form extends Component {
     this.state = INIT_STATE;
   }
 
-  componentDidUpdate(prevProps){
-    if (this.props.product &&
-        (!prevProps.product ||
-         this.props.product.product_id !== prevProps.product.product_id)){
+  componentDidMount(){
+    if (["id"] in this.props.match.params){
+      this.getProductByID(this.props.match.params.id);
       this.setState({
-        img_url: this.props.product.img_url,
-        name: this.props.product.name,
-        price: this.props.product.price,
-        selectedProductID: this.props.product.product_id,
         addButtonClass: 'dead-button',
         saveButtonClass: 'active-button'
-      });
+      })
     }
+  }
+
+  getProductByID = id => {
+    axios.get(`/api/product/${id}`)
+      .then(res => {
+        this.setState({
+          img_url: res.data[0].img_url,
+          name: res.data[0].name,
+          price: res.data[0].price,
+          selectedProductID: res.data[0].product_id
+        })
+      })
+      .catch (err => {
+        console.error(err);
+      })
   }
 
   handleChange = e => {
@@ -38,7 +47,7 @@ class Form extends Component {
   }
 
   handleCancel = () => {
-    this.setState(INIT_STATE);
+    window.location.replace('/');
   }
 
   handleAdd = () => {
@@ -48,8 +57,7 @@ class Form extends Component {
       price: this.state.price
     })
       .then( res => {
-        this.props.appGet();
-        this.handleCancel();
+        window.location.replace('/');
       })
       .catch(err => {
         console.error(err);
@@ -63,8 +71,7 @@ class Form extends Component {
       price: this.state.price
     })
       .then( res => {
-        this.props.appGet();
-        this.handleCancel();
+        window.location.replace('/');
       })
       .catch(err => {
         console.error(err);
@@ -74,7 +81,11 @@ class Form extends Component {
   render(){
     return(
       <div className="form">
-        <img src={this.state.img_url} alt={this.state.name} />
+        <img
+          src={this.state.img_url}
+          alt={this.state.name}
+          onError={i => i.target.src = '/no_image.png'}
+        />
         <label>Image URL:</label>
         <input
           name="img_url"

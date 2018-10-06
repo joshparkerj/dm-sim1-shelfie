@@ -13,9 +13,9 @@ class App extends Component {
         <Header />
         <Router>
           <Switch>
-            <Route path='/' component={Dashboard} />
             <Route path='/add' component={Form} />
             <Route path='/edit/:id' component={Form} />
+            <Route path='/' component={Dashboard} />
           </Switch>
         </Router>
       </div>

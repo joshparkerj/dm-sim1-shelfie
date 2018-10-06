@@ -17,7 +17,7 @@ class Dashboard extends Component {
   deleteProduct = id => {
     axios.delete(`/api/product/${id}`)
       .then( res => {
-        this.props.appGet();
+        window.location.replace('/');
       })
       .catch(err => {
         console.error(err);
@@ -39,7 +39,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         {
-          this.props.invList.map((e,i) => {
+          this.state.inventoryList && this.state.inventoryList.map((e,i) => {
             return (
               <Product
                 item={e}

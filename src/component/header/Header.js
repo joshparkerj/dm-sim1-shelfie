@@ -6,6 +6,14 @@ function Header(props){
     <div className="header">
       <span id="shelfie-logo"></span>
       SHELFIE
+      <span id="nav-buttons">
+        <a href="/">
+          <button>Dashboard</button>
+        </a>
+        <a href="/add">
+          <button>Add Inventory</button>
+        </a>
+      </span>
     </div>
   )
 }
