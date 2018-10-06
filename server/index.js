@@ -3,10 +3,12 @@ const bodyParser = require('body-parser');
 const controller = require('./controller');
 const massive = require('massive');
 const dotenv = require('dotenv').config();
+const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static('../public'));
+app.use(express.static('../build'));
 
 massive(process.env.DB_URI)
   .then(db => {
@@ -21,6 +23,10 @@ app.get('/api/inventory',controller.getInventory);
 app.post('/api/product', controller.createProduct);
 app.delete('/api/product/:id', controller.deleteProduct);
 app.put('/api/product/:id', controller.updateProduct);
+
+app.get('*', (req,res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 app.listen(4000, () => {
   console.log('now listening on 4000');
