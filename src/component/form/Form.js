@@ -47,7 +47,7 @@ class Form extends Component {
   }
 
   handleCancel = () => {
-    window.location.replace('/');
+    this.props.history.push('/')
   }
 
   handleAdd = () => {
@@ -57,7 +57,7 @@ class Form extends Component {
       price: this.state.price
     })
       .then( res => {
-        window.location.replace('/');
+        this.props.history.push('/');
       })
       .catch(err => {
         console.error(err);
@@ -71,7 +71,7 @@ class Form extends Component {
       price: this.state.price
     })
       .then( res => {
-        window.location.replace('/');
+        this.props.history.push('/');
       })
       .catch(err => {
         console.error(err);

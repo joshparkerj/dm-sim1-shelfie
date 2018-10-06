@@ -24,8 +24,8 @@ app.post('/api/product', controller.createProduct);
 app.delete('/api/product/:id', controller.deleteProduct);
 app.put('/api/product/:id', controller.updateProduct);
 
-app.get('*', (req,res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'));
+app.get('/', (req,res) => {
+  res.sendFile('../build/index.html');
 })
 
 app.listen(4000, () => {

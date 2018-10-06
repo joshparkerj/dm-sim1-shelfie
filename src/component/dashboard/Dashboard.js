@@ -17,7 +17,7 @@ class Dashboard extends Component {
   deleteProduct = id => {
     axios.delete(`/api/product/${id}`)
       .then( res => {
-        window.location.replace('/');
+        this.getInventory()
       })
       .catch(err => {
         console.error(err);
