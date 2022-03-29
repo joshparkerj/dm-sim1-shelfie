@@ -1,12 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
+const rateLimit = require('express-rate-limit');
 
 require('dotenv').config();
 
 const controller = require('./controller');
 
 const app = express();
+
+app.use(rateLimit({ windowMs: 1000000, max: 1000 }));
+
 app.use(bodyParser.json());
 app.use(express.static('../public'));
 app.use(express.static('../build'));
