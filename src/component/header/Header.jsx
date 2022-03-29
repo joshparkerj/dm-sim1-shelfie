@@ -1,21 +1,21 @@
 import React from 'react';
 import './header.css';
 
-function Header(props){
+function Header() {
   return (
     <div className="header">
-      <span id="shelfie-logo"></span>
+      <span id="shelfie-logo" />
       SHELFIE
       <span id="nav-buttons">
         <a href="/">
-          <button>Dashboard</button>
+          <button type="button">Dashboard</button>
         </a>
         <a href="/add">
-          <button>Add Inventory</button>
+          <button type="button">Add Inventory</button>
         </a>
       </span>
     </div>
-  )
+  );
 }
 
 export default Header;
