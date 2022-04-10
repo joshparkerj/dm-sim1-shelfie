@@ -19,7 +19,7 @@ const Form = function Form() {
   const getProductByID = (id) => {
     axios.get(`/api/product/${id}`)
       .then((res) => {
-        setImgUrl(res.data[0].img_url);
+        setImgUrl(res.data[0].imgUrl);
         setName(res.data[0].name);
         setPrice(res.data[0].price);
         setSelectedProductId(res.data[0].product_id);
@@ -83,7 +83,7 @@ const Form = function Form() {
         <input
           type="url"
           id="img-url"
-          name="img_url"
+          name="imgUrl"
           value={imgUrl}
           onChange={({ target }) => setImgUrl(target.value)}
         />

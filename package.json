@@ -34,6 +34,7 @@
     "jest-watch-typeahead": "^1.0.0",
     "massive": "^6.10.2",
     "mini-css-extract-plugin": "^2.4.5",
+    "morgan": "^1.10.0",
     "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^6.2.1",
@@ -77,10 +78,12 @@
   ],
   "jest": {
     "roots": [
-      "<rootDir>/src"
+      "<rootDir>/src",
+      "<rootDir>/server"
     ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
+      "server/**/*.{js,ts}",
       "!src/**/*.d.ts"
     ],
     "setupFiles": [
@@ -89,7 +92,9 @@
     "setupFilesAfterEnv": [],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}",
+      "<rootDir>/server/**/__tests__/**/*.{js,ts}",
+      "<rootDir>/server/**/*.{spec,test}.{js,ts}"
     ],
     "testEnvironment": "jsdom",
     "transform": {
