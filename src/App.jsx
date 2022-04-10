@@ -11,9 +11,9 @@ const App = function App() {
       <Header />
       <Router>
         <Routes>
-          <Route path="/add" component={Form} />
-          <Route path="/edit/:id" component={Form} />
-          <Route path="/" component={Dashboard} />
+          <Route path="/add" element={<Form />} />
+          <Route path="/edit/:id" element={<Form />} />
+          <Route path="/" element={<Dashboard />} />
         </Routes>
       </Router>
     </div>

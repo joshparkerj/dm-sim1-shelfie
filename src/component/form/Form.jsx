@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+
+import { useNavigate, useMatch } from 'react-router-dom';
 
 import './form.css';
 
-const Form = function Form({ match, history }) {
+const Form = function Form() {
   const [imgUrl, setImgUrl] = useState('');
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [selectedProductId, setSelectedProductId] = useState(null);
   const [addButtonClass, setAddButtonClass] = useState('active-button');
   const [saveButtonClass, setSaveButtonClass] = useState('dead-button');
+
+  const navigate = useNavigate();
+  const match = useMatch();
 
   const getProductByID = (id) => {
     axios.get(`/api/product/${id}`)
@@ -35,7 +39,7 @@ const Form = function Form({ match, history }) {
   }, []);
 
   const handleCancel = () => {
-    history.push('/');
+    navigate('/');
   };
 
   const handleAdd = () => {
@@ -45,7 +49,7 @@ const Form = function Form({ match, history }) {
       price,
     })
       .then(() => {
-        history.push('/');
+        navigate('/');
       })
       .catch((err) => {
         console.error(err);
@@ -59,7 +63,7 @@ const Form = function Form({ match, history }) {
       price,
     })
       .then(() => {
-        history.push('/');
+        navigate('/');
       })
       .catch((err) => {
         console.error(err);
@@ -77,6 +81,7 @@ const Form = function Form({ match, history }) {
       <label htmlFor="img-url">
         Image URL:
         <input
+          type="url"
           id="img-url"
           name="img_url"
           value={imgUrl}
@@ -120,15 +125,6 @@ const Form = function Form({ match, history }) {
       </div>
     </div>
   );
-};
-
-Form.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape(),
-  }).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
 };
 
 export default Form;
