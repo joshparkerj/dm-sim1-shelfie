@@ -1,1 +1,3 @@
+[![codecov](https://codecov.io/gh/joshparkerj/dm-sim1-shelfie/branch/master/graph/badge.svg?token=9J50OO15BY)](https://codecov.io/gh/joshparkerj/dm-sim1-shelfie)[![Node.js CI](https://github.com/joshparkerj/dm-sim1-shelfie/actions/workflows/node.js.yml/badge.svg)](https://github.com/joshparkerj/dm-sim1-shelfie/actions/workflows/node.js.yml)
+
 This is the simulation project from https://github.com/DevMountain/simulation-1
