@@ -73,7 +73,7 @@ const Form = function Form() {
   return (
     <div className="form">
       <img
-        src={imgUrl}
+        src={new URL(imgUrl)}
         alt={name}
         // eslint-disable-next-line no-param-reassign
         onError={(i) => { i.target.src = '/no_image.png'; }}
